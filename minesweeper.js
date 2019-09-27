@@ -26,7 +26,7 @@ function startGame() {
     var cell = board.cells[i];
     //Assign the result of countSurroundingMines to a property on each cell object. 
     cell.surroundingMines = countSurroundingMines(cell);
-
+    //document.addEventListener calls checkForWin every time the left mouse button is clicked
     document.addEventListener("click", checkForWin);
   }
   // Don't remove this function call: it makes the game work!
