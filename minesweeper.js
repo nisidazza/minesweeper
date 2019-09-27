@@ -28,6 +28,8 @@ function startGame() {
     cell.surroundingMines = countSurroundingMines(cell);
     //document.addEventListener calls checkForWin every time the left mouse button is clicked
     document.addEventListener("click", checkForWin);
+    //calls checkForWin when the right mouse button (contextmenu) is clicked
+    document.addEventListener("contextmenu", checkForWin);
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
@@ -43,6 +45,9 @@ function checkForWin() {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   //   lib.displayMessage('You win!')
+  //it should loop through all of board.cells.
+  
+
 }
 
 // Define this function to count the number of mines around the cell
