@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', startGame)
 var board = {}
 
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function generateBoard() {
-  var cells = [];
+  var board = { 
+    cells: []
+  }
   var size = getRandomInt(3,6);
   for(var i = 0; i < size; i++){
     for(var j = 0; j < size; j++){
@@ -18,13 +18,11 @@ function generateBoard() {
       if(Math.random() <= 1/3){
         isMine = true;
       }
-      var cell = { row: i, col: j, isMine: isMine, hidden: true, isMarked: false, surroundingMines: 0}
-      cells.push(cell);
+      var cell = { row: i, col: j, isMine: isMine, hidden: true, isMarked: false}
+      board.cells.push(cell);
     }
   }
-  return { 
-    cells: cells
-  }
+  return board;
 }
 
 function startGame() {
@@ -44,7 +42,6 @@ function startGame() {
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
-
 }
 
 // Define this function to look for a win condition:
@@ -52,7 +49,6 @@ function startGame() {
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin() {
-
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   //   lib.displayMessage('You win!')
@@ -68,8 +64,7 @@ function checkForWin() {
       }
     }
   }
-
-  displayMessage("You win");
+  displayMessage("You Win!");
 }
 
 // Define this function to count the number of mines around the cell
