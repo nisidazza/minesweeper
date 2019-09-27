@@ -39,6 +39,10 @@ function startGame() {
     document.addEventListener("click", checkForWin);
     //calls checkForWin when the right mouse button (contextmenu) is clicked
     document.addEventListener("contextmenu", checkForWin);
+    //reset the board
+    var reset = document.getElementById("reset");
+    reset.addEventListener("click", function(){location.reload()});
+  
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
@@ -89,4 +93,8 @@ function countSurroundingMines(cell) {
   }
   return countMines;
 }
+
+
+
+
 
