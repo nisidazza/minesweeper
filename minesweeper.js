@@ -11,14 +11,14 @@ function getRandomInt(min, max) {
 var winner = new Audio();
 winner.src = "sounds/You-win-sound-effect.mp3"
 var fireworks = new Audio();
-fireworks.src = "sounds/multiple-fireworks-with-crackling.mp3";
+fireworks.src = "sounds/magic-chime-end-game.mp3";
 
 
 function generateBoard() {
   var board = { 
     cells: []
   }
-  var size = getRandomInt(3,6);
+  var size = getRandomInt(4,6);
   for(var i = 0; i < size; i++){
     for(var j = 0; j < size; j++){
       var isMine = false;
@@ -66,10 +66,10 @@ function checkForWin() {
   //it should loop through all of board.cells.
   for (i = 0; i < board.cells.length; i++) {
     var cell = board.cells[i];
+    if (cell.isMine === true && cell.isMarked === false) {
+      return;
+    }
     if (cell.hidden === true) {
-      if (cell.isMine === true && cell.isMarked === false) {
-        return;
-      }
       if (cell.isMine === false && cell.isMarked === true) {
         return;
       }

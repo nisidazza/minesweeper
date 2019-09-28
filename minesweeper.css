@@ -4,11 +4,14 @@ html, body {
 }
 
 body {
+  background-size: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
 }
+
+
 
 #message, #notes {
   display: flex;
@@ -30,7 +33,7 @@ body {
   font-size: 2rem;
   width: 75px;
   height: 75px;
-  border: 1px #ccc dotted;
+  border: 2px black dotted;
   border-radius: 10%;
   background-color: white;
   margin: 3px;
@@ -44,11 +47,11 @@ body {
 }
 
 div.mine, div.mine:hover {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+  background: no-repeat center/60% url("images/daisy.png") palevioletred;
 }
 
 div.hidden {
-  background: #eee;
+  background:whitesmoke;
 }
 
 div.hidden:hover {
@@ -64,10 +67,10 @@ button#reset {
   margin-bottom: 10px;
   width: 15%;
   height: 9%;
-  border: 2px solid blue;
+  border: 2px solid whitesmoke;
   border-radius: 6%;
   font-weight:bold;
-  background-color:cornflowerblue;
+  background-color:plum;
 }
 
 p#instruction {
