@@ -12,6 +12,8 @@ var winner = new Audio();
 winner.src = "sounds/You-win-sound-effect.mp3"
 var fireworks = new Audio();
 fireworks.src = "sounds/magic-chime-end-game.mp3";
+var flag = new Audio();
+flag.src = "sounds/pop-flag.mp3";
 
 
 function generateBoard() {
