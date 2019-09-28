@@ -60,12 +60,18 @@ div.marked, div.marked:hover {
 }
 
 button#reset {
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   width: 15%;
-  height: 10%;
+  height: 9%;
   border: 2px solid blue;
   border-radius: 6%;
   font-weight:bold;
   background-color:cornflowerblue;
+}
 
+p#instruction {
+  margin-bottom: 5px;
+  margin-top:10px;
+  
 }
