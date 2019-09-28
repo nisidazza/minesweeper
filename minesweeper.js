@@ -7,6 +7,13 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//make a variable to hold the sound effect
+var winner = new Audio();
+winner.src = "sounds/You-win-sound-effect.mp3"
+var fireworks = new Audio();
+fireworks.src = "sounds/multiple-fireworks-with-crackling.mp3";
+
+
 function generateBoard() {
   var board = { 
     cells: []
@@ -69,6 +76,8 @@ function checkForWin() {
     }
   }
   displayMessage("You Win!");
+  winner.play();
+  
 }
 
 // Define this function to count the number of mines around the cell
@@ -98,7 +107,6 @@ function clearBoard() {
   document.getElementsByClassName("board")[0].innerHTML = "";
   board = {};
   startGame();
-
 }
 
 
