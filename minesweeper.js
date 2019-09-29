@@ -20,7 +20,7 @@ function generateBoard() {
   var board = { 
     cells: []
   }
-  var size = getRandomInt(4,6);
+  var size = getRandomInt(3,6);
   for(var i = 0; i < size; i++){
     for(var j = 0; j < size; j++){
       var isMine = false;
@@ -104,7 +104,7 @@ function countSurroundingMines(cell) {
   }
   return countMines;
 }
-
+//reset the board
 function clearBoard() {
   document.getElementsByClassName("board")[0].innerHTML = "";
   board = {};
