@@ -42,23 +42,19 @@ body {
   justify-content: center;
 }
 
-.board div:hover {
-  background-color: white;
-}
-
-div.mine, div.mine:hover {
+.board div.mine, div.mine:hover {
   background: no-repeat center/60% url("images/daisy.png") palevioletred;
 }
 
-div.hidden {
-  background:whitesmoke;
+.board div.hidden {
+  background:pink;
 }
 
-div.hidden:hover {
+.board div.hidden:hover {
   background: #ccc;
 }
 
-div.marked, div.marked:hover {
+.board div.marked, div.marked:hover {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue;
 }
 
