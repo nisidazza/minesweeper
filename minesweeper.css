@@ -58,7 +58,7 @@ body {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue; 
 }
 
-button#reset {
+button.btn-style {
   margin-top: 15px;
   margin-bottom: 10px;
   width: 15%;
