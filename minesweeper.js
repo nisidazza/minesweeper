@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', startFirstGame)
 var board = {}
 
 //make a variable to hold the sound effect
-var winner = new Audio();
-winner.src = "sounds/You-win-sound-effect.mp3"
-var fireworks = new Audio();
-fireworks.src = "sounds/magic-chime-end-game.mp3";
+var winnerSound = new Audio();
+winnerSound.src = "sounds/You-win-sound-effect.mp3"
+var magicChimeSound = new Audio();
+magicChimeSound.src = "sounds/magic-chime-end-game.mp3";
 var flag = new Audio();
 flag.src = "sounds/pop-flag.mp3";
 
@@ -28,7 +28,7 @@ function generateBoard() {
   board = { 
     cells: []
   }
-  var size = getRandomInt(3,6);
+  var size = getRandomInt(4,6);
   for(var i = 0; i < size; i++){
     for(var j = 0; j < size; j++){
       var isMine = false;
@@ -107,7 +107,7 @@ function checkForWin() {
     }
   }
   displayMessage("You Win!");
-  winner.play();
+  winnerSound.play();
   removeListeners()
 }
 
