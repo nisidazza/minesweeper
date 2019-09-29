@@ -50,8 +50,7 @@ function startGame() {
     document.addEventListener("contextmenu", checkForWin);
     //reset the board
     var reset = document.getElementById("reset");
-    reset.addEventListener("click", clearBoard);
-  
+    reset.addEventListener("click", restartGame);
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
@@ -108,8 +107,9 @@ function countSurroundingMines(cell) {
 function clearBoard() {
   document.getElementsByClassName("board")[0].innerHTML = "";
   board = {};
-  startGame();
 }
 
-
-
+function restartGame() {
+  clearBoard();
+  startGame();
+}
