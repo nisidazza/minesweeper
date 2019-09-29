@@ -50,12 +50,12 @@ body {
   background:pink;
 }
 
-.board div.hidden:hover {
+.board div.hidden:hover:not(.marked) {
   background: #ccc;
 }
 
 .board div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/60% url("images/mark.svg") deepskyblue; 
 }
 
 button#reset {
