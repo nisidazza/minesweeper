@@ -70,15 +70,13 @@ function checkForWin() {
     if (cell.isMine === true && cell.isMarked === false) {
       return;
     }
-    if (cell.hidden === true) {
-      if (cell.isMine === false && cell.isMarked === true) {
-        return;
-      }
+    if (cell.isMine === false && cell.hidden === true) {
+      return;
     }
   }
   displayMessage("You Win!");
   winner.play();
-  
+  removeListeners()
 }
 
 // Define this function to count the number of mines around the cell
@@ -103,6 +101,7 @@ function countSurroundingMines(cell) {
   }
   return countMines;
 }
+
 //reset the board
 function clearBoard() {
   document.getElementsByClassName("board")[0].innerHTML = "";
