@@ -1,11 +1,7 @@
-document.addEventListener('DOMContentLoaded', startGame)
+document.addEventListener('DOMContentLoaded', startFirstGame)
 
 //Define your `board` object here!
 var board = {}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 //make a variable to hold the sound effect
 var winner = new Audio();
@@ -15,9 +11,21 @@ fireworks.src = "sounds/magic-chime-end-game.mp3";
 var flag = new Audio();
 flag.src = "sounds/pop-flag.mp3";
 
+function startFirstGame(){
+  generateBoard();
+  wireEvents();
+  lib.initBoard();
+}
+
+function restartGame() {
+  clearBoard();
+  generateBoard();
+  wireEvents();
+  lib.initBoard();
+}
 
 function generateBoard() {
-  var board = { 
+  board = { 
     cells: []
   }
   var size = getRandomInt(3,6);
@@ -31,12 +39,13 @@ function generateBoard() {
       board.cells.push(cell);
     }
   }
-  return board;
 }
 
-function startGame() {
-  board = generateBoard();
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
+function wireEvents() {  
   //loop through the contents of board.cells
   for (var i = 0; i < board.cells.length; i++) {
     //the loop needs to call countSurroundingMines once
@@ -51,9 +60,32 @@ function startGame() {
     //reset the board
     var reset = document.getElementById("reset");
     reset.addEventListener("click", restartGame);
+
+    document.getElementById("replay").addEventListener("click", replayGame);
   }
-  // Don't remove this function call: it makes the game work!
-  lib.initBoard()
+  // Don't remove this function call: it makes the game work!  
+}
+
+// Define this function to count the number of mines around the cell
+// (there could be as many as 8). You don't have to get the surrounding
+// cells yourself! Just use `lib.getSurroundingCells`: 
+//
+//   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
+//
+// It will return cell objects in an array. You should loop through 
+// them, counting the number of times `cell.isMine` is true.
+function countSurroundingMines(cell) {
+  var surrounding = lib.getSurroundingCells(cell.row, cell.col);
+  //loop through the surrounding cells returned from getSurroundingCells
+  //checking each one to see if it's a mine and adding to a count variable if it is.
+  var countMines = 0;
+  for (i = 0; i < surrounding.length; i++) {
+    if (surrounding[i].isMine === true) {
+      countMines++;
+    }
+    //Once you have the correct count, return it.
+  }
+  return countMines;
 }
 
 // Define this function to look for a win condition:
@@ -79,36 +111,19 @@ function checkForWin() {
   removeListeners()
 }
 
-// Define this function to count the number of mines around the cell
-// (there could be as many as 8). You don't have to get the surrounding
-// cells yourself! Just use `lib.getSurroundingCells`: 
-//
-//   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
-//
-// It will return cell objects in an array. You should loop through 
-// them, counting the number of times `cell.isMine` is true.
-function countSurroundingMines(cell) {
-  var surrounding = lib.getSurroundingCells(cell.row, cell.col);
-  //loop through the surrounding cells returned from getSurroundingCells
-  //checking each one to see if it's a mine and adding to a count variable if it is.
-  var countMines = 0;
-  for (i = 0; i < surrounding.length; i++) {
-    if (surrounding[i].isMine === true) {
-      countMines++;
-      console.log(i);
-    }
-    //Once you have the correct count, return it.
-  }
-  return countMines;
+function replayGame(){
+  clearBoard();
+  resetCurrentBoard();
+  lib.initBoard();
 }
 
-//reset the board
 function clearBoard() {
   document.getElementsByClassName("board")[0].innerHTML = "";
-  board = {};
 }
 
-function restartGame() {
-  clearBoard();
-  startGame();
+function resetCurrentBoard(){
+  board.cells.forEach(cell => {
+    cell.hidden = true;
+    cell.isMarked = false;
+  });
 }
