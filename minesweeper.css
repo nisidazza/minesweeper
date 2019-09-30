@@ -11,8 +11,6 @@ body {
   flex-direction: column;
 }
 
-
-
 #message, #notes {
   display: flex;
   flex-direction: column;
@@ -47,7 +45,7 @@ body {
 }
 
 .board div.hidden {
-  background:pink;
+  background: pink;
 }
 
 .board div.hidden:hover:not(.marked) {
@@ -55,7 +53,7 @@ body {
 }
 
 .board div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue; 
+  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
 }
 
 button.btn-style {
@@ -67,9 +65,9 @@ button.btn-style {
   width: 15%;
   border: 2px solid whitesmoke;
   border-radius: 6%;
-  font-weight:bold;
-  background-color:plum;
-  padding-top:20px;
+  font-weight: bold;
+  background-color: plum;
+  padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
 }
@@ -79,6 +77,14 @@ div.buttons {
   justify-content: center;
   margin-top: 20px;
   width: 100%;
-  
 }
 
+button.btn-size-style {
+  background-color: plum;
+  border: 2px solid whitesmoke;
+  border-radius: 6%;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px;
+}
