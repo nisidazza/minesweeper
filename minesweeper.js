@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', startFirstGame)
+document.addEventListener('DOMContentLoaded', startGame)
 
 //Define your `board` object here!
 var board = {}
@@ -11,14 +11,41 @@ magicChimeSound.src = "sounds/magic-chime-end-game.mp3";
 var flag = new Audio();
 flag.src = "sounds/pop-flag.mp3";
 
-function startFirstGame(){
-  generateBoard();
-  wireEvents();
-  lib.initBoard();
+function smallBoard() {
+  size = 4;
+  restartGame();
+}
+
+function mediumBoard() {
+  size = 5;
+  restartGame();
+}
+
+function largeBoard() {
+  size = 6;
+  restartGame();
 }
 
 function restartGame() {
   clearBoard();
+  startGame();
+}
+
+function replaySameGame(){
+  clearBoard();
+  board.cells.forEach(cell => {
+    cell.hidden = true;
+    cell.isMarked = false;
+    cell.isProcessed = false;
+  });
+  lib.initBoard();
+}
+
+function clearBoard() {
+  document.getElementsByClassName("board")[0].innerHTML = "";
+}
+
+function startGame(){
   generateBoard();
   wireEvents();
   lib.initBoard();
@@ -28,7 +55,6 @@ function generateBoard() {
   board = { 
     cells: []
   }
-  getRangeInt();
   for(var i = 0; i < size; i++){
     for(var j = 0; j < size; j++){
       var isMine = false;
@@ -41,17 +67,6 @@ function generateBoard() {
   }
 }
 
-/*/function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}*/
-
-function getRangeInt(min, max) {
-  var n = min;
-  while(min <= max) {
-    return n++;
-  } 
-}
-var size = getRangeInt(4,6);
 
 function wireEvents() {  
   //loop through the contents of board.cells
@@ -69,7 +84,7 @@ function wireEvents() {
     var reset = document.getElementById("reset");
     reset.addEventListener("click", restartGame);
 
-    document.getElementById("replay").addEventListener("click", replayGame);
+    document.getElementById("replay").addEventListener("click", replaySameGame);
 
     document.getElementById("small").addEventListener("click", smallBoard);
     document.getElementById("medium").addEventListener("click", mediumBoard);
@@ -122,50 +137,4 @@ function checkForWin() {
   displayMessage("You Win!");
   winnerSound.play();
   removeListeners()
-}
-
-function replayGame(){
-  clearBoard();
-  resetCurrentBoard();
-  lib.initBoard();
-}
-
-function clearBoard() {
-  document.getElementsByClassName("board")[0].innerHTML = "";
-}
-
-function resetCurrentBoard(){
-  board.cells.forEach(cell => {
-    cell.hidden = true;
-    cell.isMarked = false;
-  });
-  clearBoard();
-}
-
-function resetBoard() {
-  if(size === 4) {
-    smallBoard();
-  } else if(size === 5) {
-    mediumBoard();
-  } else{
-    largeBoard();
-  }
-}
-
-function smallBoard() {
-  clearBoard();
-  size = 4;
-  startFirstGame(size);
-}
-
-function mediumBoard() {
-  clearBoard();
-  size = 5;
-  startFirstGame(size);
-}
-
-function largeBoard() {
-  clearBoard();
-  size = 6;
-  startFirstGame(size);
 }
