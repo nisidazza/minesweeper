@@ -41,7 +41,7 @@ body {
 }
 
 .board div.mine, div.mine:hover {
-  background: no-repeat center/60% url("images/daisy.png") palevioletred;
+  background: no-repeat center/100% url("images/daisy.png") palevioletred;
 }
 
 .board div.hidden {
