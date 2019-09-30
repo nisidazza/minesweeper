@@ -59,18 +59,26 @@ body {
 }
 
 button.btn-style {
-  margin-top: 15px;
+  cursor: pointer;
+  margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   width: 15%;
-  height: 9%;
   border: 2px solid whitesmoke;
   border-radius: 6%;
   font-weight:bold;
   background-color:plum;
+  padding-top:20px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 
-p#instruction {
-  margin-bottom: 5px;
-  margin-top:10px;
+div.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
   
 }
+

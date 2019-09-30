@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Minesweeper</title>
-    <link rel="stylesheet" href="minesweeper.css">
-    <script src="lib/tests.js"></script>
-    <script src="lib/lib.js"></script>
-    <script src="minesweeper.js"></script>
-  </head>
-  <body style ="background:url(images/daisies_background.jpg); background-repeat: no-repeat; background-size: cover">
-    <div id="message"></div>
-    <div id="notes"></div>
-    <div class="board"></div>
-    <p id="instruction">Press the button to choose the size of the board and play again!</p>
-    <button id="reset" type="button">Choose and Play!</button>
-    <button id="replay" type="button">Replay same Board!</button>
-  </body>
+
+<head>
+  <title>Minesweeper</title>
+  <link rel="stylesheet" href="minesweeper.css">
+  <script src="lib/tests.js"></script>
+  <script src="lib/lib.js"></script>
+  <script src="minesweeper.js"></script>
+</head>
+
+<body style="background:url(images/daisies_background.jpg); background-repeat: no-repeat; background-size: cover">
+  <div id="message"></div>
+  <div id="notes"></div>
+  <div class="board"></div>
+  <div class="buttons">
+    <button id="reset" type="button" class="btn-style">Choose a size and Play!</button>
+    <button id="replay" type="button" class="btn-style">Replay same Board!</button>
+  </div>
+</body>
+
 </html>
